@@ -1,38 +1,37 @@
-import {styleSheet} from "./style";
-import {withStyles} from "@mui/styles";
 import {Component} from "react";
 import {
     Button,
     Grid, Paper,
-    Table,
-    TableBody, TableCell, 
+    Table, TableBody,
+    TableCell,
     TableContainer,
     TableHead,
-    TableRow,
+    TableRow,Tab,
     Tabs,
     TextField,
     Typography
 } from "@mui/material";
-import {Tab} from "@mui/icons-material";
+import {withStyles} from "@mui/styles";
 
-
+import {styleSheet} from "../Customer/style";
 
 
 function createData(
-    customerId,
+    itemId,
     name,
-    address,
-    contactNo
+    unitPrice,
+    qty
 
 ) {
-    return { customerId, name, address, contactNo};
+    return { itemId, name, unitPrice, qty};
 }
 
 const rows = [
-    createData('C-001', 'Rashmi', 'Galle', '077-0888888'),
-    createData('C-002', 'Rashmi', 'Galle', '077-0888888'),
-    createData('C-003', 'Rashmi', 'Galle', '077-0888888'),
-    createData('C-004', 'Rashmi', 'Galle', '077-0888888'),
+    createData('I-001', 'Rice', 200.00, 10),
+    createData('I-002', 'Rice', 200.00, 10),
+    createData('I-003', 'Rice', 200.00, 10),
+    createData('I-004', 'Rice', 200.00, 10)
+
 
 ];
 
@@ -40,7 +39,7 @@ const rows = [
 
 
 
-class Customer extends Component{
+class Item extends Component{
    constructor(props) {
        super(props);
    }
@@ -53,16 +52,16 @@ class Customer extends Component{
 
                <Grid className={classes.nav}>
                    <Tabs  centered onChange={onchange}>
-                       <Tab label="Home"  style={{color:'white',top:'7px'}}/>
+                       <Tab label="Home"  href="/" style={{color:'white',top:'7px'}} />
 
-                       <Tab label="Customer"  style={{color:'white',top:'7px'}}/>
+                       <Tab label="Customer"  href="/customer" style={{color:'white',top:'7px'}}/>
 
-                       <Tab label="Item" style={{color:'white',top:'7px'}}/>
+                       <Tab label="Item" href="/item" style={{color:'white',top:'7px'}}/>
                    </Tabs>
                </Grid>
 
                <Typography variant="h5" style={{left:0,right:0,top:0,bottom:0,margin:"auto",width:"max-content",padding:'3vh'}}>
-                   Manage Customer
+                   Manage Item
                </Typography>
 
                <Grid style={{padding:'7vh',width:"max-content",left:0,right:0,top:0,bottom:0,margin:"auto"}}>
@@ -78,8 +77,8 @@ class Customer extends Component{
                            <TextField
                                required
                                id="outlined-required"
-                               label="Customer Id"
-                               placeholder="C-001"
+                               label="Item Id"
+                               placeholder="I-001"
                                style={{width:'15vw'}}
                            />
 
@@ -87,24 +86,26 @@ class Customer extends Component{
 
                                id="outlined-required"
                                label="Name"
-                               placeholder="Ex: Rashmi Navodya"
+                               placeholder="Ex: Rice"
                                style={{width:'25vw'}}
                            />
 
                            <TextField
 
-                               id="outlined-required"
-                               label="Address"
-                               placeholder="Ex:Baddegama,Galle"
-                               style={{width:'30vw'}}
+                               id="filled-number"
+                               type="number"
+                               label="Unit Price"
+                               placeholder="Ex:100.00"
+                               style={{width:'15vw'}}
                            />
 
 
                            <TextField
 
-                               id="outlined-required"
-                               label="Contact No"
-                               placeholder="Ex:077-7878787"
+                               id="filled-number"
+                               type="number"
+                               label="Qty"
+                               placeholder="Ex:100"
                                style={{width:'15vw'}}
                            />
 
@@ -115,8 +116,17 @@ class Customer extends Component{
                </Grid>
 
                <Grid style={{left:0,right:0,top:0,bottom:0,margin:"auto",width:"max-content",paddingBottom:"5vh"}}>
-                   <Button variant="contained" color="success">
+                   <Button variant="contained" color="success" style={{margin:"1vh"}}>
                        Save
+                   </Button>
+                   <Button variant="contained" color="warning" style={{margin:"1vh"}}>
+                       Update
+                   </Button>
+                   <Button variant="contained" color="error" style={{margin:"1vh"}}>
+                       Delete
+                   </Button>
+                   <Button variant="contained" color="info" style={{margin:"1vh"}}>
+                       Cancel
                    </Button>
                </Grid>
 
@@ -125,22 +135,22 @@ class Customer extends Component{
                        <Table sx={{ minWidth: 600 }} aria-label="customized table">
                            <TableHead style={{backgroundColor:'black'}}>
                                <TableRow>
-                                   <TableCell align="center" style={{fontWeight:'bolder',color:'white'}}>Customer Id</TableCell>
+                                   <TableCell align="center" style={{fontWeight:'bolder',color:'white'}}>Item Id</TableCell>
                                    <TableCell align="center" style={{fontWeight:'bolder',color:'white'}}>Name</TableCell>
-                                   <TableCell align="center" style={{fontWeight:'bolder',color:'white'}}>Address</TableCell>
-                                   <TableCell align="center" style={{fontWeight:'bolder',color:'white'}}>Contact No</TableCell>
+                                   <TableCell align="center" style={{fontWeight:'bolder',color:'white'}}>Unit Price</TableCell>
+                                   <TableCell align="center" style={{fontWeight:'bolder',color:'white'}}>Qty</TableCell>
 
                                </TableRow>
                            </TableHead>
                            <TableBody>
                                {rows.map((row) => (
-                                   <TableRow key={row.customerId} >
+                                   <TableRow key={row.itemId} >
                                        <TableCell align="center" component="th" scope="row">
-                                           {row.customerId}
+                                           {row.itemId}
                                        </TableCell>
                                        <TableCell align="center">{row.name}</TableCell>
-                                       <TableCell align="center">{row.address}</TableCell>
-                                       <TableCell align="center">{row.contactNo}</TableCell>
+                                       <TableCell align="center">{row.unitPrice}</TableCell>
+                                       <TableCell align="center">{row.qty}</TableCell>
                                    </TableRow>
                                ))}
                            </TableBody>
@@ -157,4 +167,4 @@ class Customer extends Component{
 
 }
 
-export default withStyles(styleSheet)(Customer)
+export default withStyles(styleSheet)(Item)

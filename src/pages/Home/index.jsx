@@ -1,9 +1,8 @@
 import {styleSheet} from "./style";
 import {withStyles} from "@mui/styles";
-import {Avatar, Card, CardActionArea, CardContent, CardMedia, Grid, Stack, Tab, Tabs, Typography} from "@mui/material";
-import * as PropTypes from "prop-types";
+import {Card, CardActionArea, CardContent, CardMedia, Grid, Stack, Tab, Tabs} from "@mui/material";
 import homeImg from '../../assets/img/img1.png'
-import PersonPinIcon from '@mui/icons-material/PersonPin';
+
 
 const {Component} = require("react");
 
@@ -22,16 +21,16 @@ class Home extends Component{
 
                <Grid className={classes.navTabs}>
                    <Tabs  centered onChange={onchange}>
-                       <Tab label="Home"  style={{color:'white',top:'7px'}}/>
+                       <Tab label="Home"  href="/" style={{color:'white',top:'7px'}} />
 
-                       <Tab label="Customer"  style={{color:'white',top:'7px'}}/>
+                       <Tab label="Customer"  href="/customer" style={{color:'white',top:'7px'}}/>
 
-                       <Tab label="Item" style={{color:'white',top:'7px'}}/>
+                       <Tab label="Item" href="/item" style={{color:'white',top:'7px'}}/>
                    </Tabs>
                </Grid>
 
                <Grid item lg={6} md={6} sm={6} xm={6}>
-                   <Card sx={{ maxHeight: '92vh'}}>
+                   <Card sx={{ maxHeight: '80vw'}} >
                        <CardActionArea>
                            <CardMedia
                                component="img"

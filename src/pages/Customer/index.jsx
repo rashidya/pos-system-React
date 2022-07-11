@@ -8,12 +8,12 @@ import {
     TableBody, TableCell,
     TableContainer,
     TableHead,
-    TableRow,
+    TableRow,Tab,
     Tabs,
     TextField,
     Typography
 } from "@mui/material";
-import {Tab} from "@mui/icons-material";
+
 
 
 
@@ -53,11 +53,11 @@ class Customer extends Component{
 
                <Grid className={classes.nav}>
                    <Tabs  centered onChange={onchange}>
-                       <Tab label="Home"  style={{color:'white',top:'7px'}}/>
+                       <Tab label="Home"  href="/" style={{color:'white',top:'7px'}} />
 
-                       <Tab label="Customer"  style={{color:'white',top:'7px'}}/>
+                       <Tab label="Customer"  href="/customer" style={{color:'white',top:'7px'}}/>
 
-                       <Tab label="Item" style={{color:'white',top:'7px'}}/>
+                       <Tab label="Item" href="/item" style={{color:'white',top:'7px'}}/>
                    </Tabs>
                </Grid>
 
@@ -115,8 +115,17 @@ class Customer extends Component{
                </Grid>
 
                <Grid style={{left:0,right:0,top:0,bottom:0,margin:"auto",width:"max-content",paddingBottom:"5vh"}}>
-                   <Button variant="contained" color="success">
+                   <Button variant="contained" color="success" style={{margin:"1vh"}}>
                        Save
+                   </Button>
+                   <Button variant="contained" color="warning" style={{margin:"1vh"}}>
+                       Update
+                   </Button>
+                   <Button variant="contained" color="error" style={{margin:"1vh"}}>
+                       Delete
+                   </Button>
+                   <Button variant="contained" color="info" style={{margin:"1vh"}}>
+                       Cancel
                    </Button>
                </Grid>
 
